@@ -1,0 +1,996 @@
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+\usepackage{booktabs} % For better looking tables
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{graphicx}
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{xcolor}
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+% \hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{LIVE-ShareChat UGC-VQA Database}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Sandeep Mishra,
+        Alan C. Bovik,~\IEEEmembership{Fellow,~IEEE,}% <-this % stops a space
+\thanks{}% <-this % stops a space
+\thanks{}% <-this % stops a space
+\thanks{}}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{DRAFT FOR SUBMISSION TO IEEE TRANSACTIONS ON IMAGE PROCESSING}%
+{Mishra \MakeLowercase{\textit{et al.}}: LIVE-ShareChat UGC-VQA Database}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+We present a large-scale subjective study of User-Generated-Content (UGC) for Video Quality Assessment (VQA) on a diverse set of videos from ShareChat. The consistently evolving space of telecommunications combined with the advancements in affordable and reliable consumer capture devices has led to an exponential growth of social media platforms. This effect is particularly remarkable in developing countries like India. Owing to the huge diversity in cultures and languages, the Indian social media platform, ShareChat, provides a safe and culturally oriented space for users to generate and share content in their preferred languages. Such diverse content demands better systems for evaluating the perceived visual quality of these videos in order to provide better user recommendations.  
+
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{\textcolor{red}{Introduction}}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{A}{ccording} to a recent report by ETGovernment\cite{IEEEhowto:ETReport}, India is expected to surpass 1 billion internet users. Another report by The Economic times 
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+
+\section{Related Work}
+\subsection{UGC-VQA Databases}
+The Camera Video Database (CVD2014) was one of the first VQA databases that was relevant for the UGC-VQA scenario. It was followed by the LIVE-Qualcomm Mobile In-Capture Database. Both of these datasets were indeed UGC but modelled only camera-capture distortions on not very diverse content. With significant growth in crowd-sourcing techniques, the authors of [] created the KoNViD-1k VQA database. They sampled 1200 UGC videos from the YFCC100M dataset which were scored on the basis of their perceived video quality by 642 crowd-workers. Another such crowd-sourced VQA database is the LIVE-VQC database with 585 videos, scored by 4776 unique Amazon Mechanical Turk participants. YouTube-UGC Dataset is another similar recently published dataset that contains 1380 video clips rated by more than 8000 human subjects. Another very recent VQA database is the Large-Scale Social Video Quality Database (LSVQ) which contains around 39k videos rated by more than 6000 unique subjects. The differentiating factor for LSVQ is the fact that they also collect human opinions for 117k space-time video patches cropped from the original set of videos.
+% \subsubsection{Database Analysis}
+% To characterize the content diversity of the videos in each database we follow the method suggested in [Videval], wherein we compute the following six low level features: brightness, contrast, colorfulness, sharpness, spatial information, and temporal information. The features are computed over every 10th frame of each video and then averaged over all frames to obtain a single feature representation of each video. We denote each feature as ${C_i}$, $i=1,2,\cdots,6$. Figure 1 demonstrates the fitted distribution of each feature for each database. To evaluate the range and uniformity of the databases on each feature, we compute their relative range and relative uniformity of coverage as suggested in [VidEval]. The relative range is defined as: 
+
+% \begin{equation}
+%     R_i^k = \frac{\text{max}(C_i^k) - \text{min}(C_i^k)}{\text{max}_k(C_i^k)}
+% \end{equation}
+
+% where $C_i^k$ denotes the $i^{th}$ feature of the $k^{th}$ database and $\text{max}_k(C_i^k)$ denotes the maximum $C_i^k$ across all $k$.
+
+
+% \subsubsection{Observations}
+
+\subsection{\textcolor{red}{UGC-VQA Models}}
+
+\section{Details of Subjective Study}
+\subsection{LIVE-ShareChat UGC-VQA Database}
+The LIVE-ShareChat database contains 600 carefully selected videos from a publicly available set of 20,000 videos on the ShareChat website. The videos were pre-labeled with annotations pertaining to certain issues commonly found in user-generated content such as jitter and blur, abnormal lighting, too much camera movement, etc. We make sure to equally represent each annotated issue in the chosen subset. The dimensions of the available videos depend completely on the camera specifications, the settings chosen during capture, and the editing after. Due to these reasons, the height of the videos varied anywhere between 528 to 5428 pixels, and the width varies between 320 to 2420 pixels. To avoid such huge differences in the dimensions of each video, we specifically choose videos with heights between 1000 to 1500, and widths between 500 to 800 pixels. As can be seen in figure [\cite{}], the peaks of the frequency distribution of each dimension lie in the chosen ranges. Note that for all the chosen videos height is greater than the width, thus making them suitable for viewing in portrait mode which is the preferred mode for social media platforms like ShareChat, Instagram, TikTok, etc. We also filter these videos such that the duration of each video lies anywhere between 10-65 seconds. This allows us to temporally crop the selected videos to clips of 8 seconds making them feasible for a psychometric human study. ITU-T P.913 section 6.5 [\cite{}] highly recommends videos of duration 8-10 seconds, since longer duration videos may have significantly higher quality variations thus making it difficult for the user to provide a global evaluation. 
+
+\subsection{Subjective Study Environment}
+Our large-scale human study was conducted in the Subjective
+Study room at the Laboratory for Image and Video Engineering
+at The University of Texas at Austin. Since the majority of social media users browse such videos on mobile devices, we used a Google Pixel 5 with Android 11 operating system to display the videos using an in-house android application. The device has a 6" inch OLED panel with FHD+ resolution supporting a refresh rate of up to 90Hz. We fixed both the brightness and audio of the device to 75\% of the maximum to avoid any automatic changes during the study. The device also supports automatic re-scaling of a video to fit the screen, thus removing any requirement on our end to do so. Hence videos are displayed to subjects just as they would have viewed them on their own devices. We also provided an external keyboard and a mouse to facilitate the viewing and rating experience of the subjects. 
+
+The study room is both sound and light-proof to mimic an isolated environment. We made sure that the artificial lighting arrangements did not interfere with the viewing conditions by placing them at strategic locations to simulate a living room's lighting condition. The incident luminance on the mobile screen was measured to be approximately 150 lux. The device was stationed on a smartphone mount with adjustable viewing angles and a height-adjustable chair was also provided to the subjects for them to comfortably position themselves for a good viewing experience. Subjects were recommended to sit at a distance of three-fourths of their arm's length to mimic typical social media browsing behavior. They were also suggested to avoid any significant changes to their seating and viewing arrangements once their study began. We also instructed them to not alter any device settings and use the provided keyboard and mouse to communicate with the application only when prompted. 
+
+Upon arrival, each participant was assigned a subject number as an identifier and a predefined playlist of videos is played for them. After each video playback, a rating screen appears with a rating bar for the subject to provide their evaluation of the subjective video quality. The rating bar was a continuous 0-100 scale, based on the SAMVIQ scale suggested in ITU recommendations [\cite{}]. It has 5 labels: Bad(0), Poor(25), Fair(50), Good(75), and Excellent(100), where the quantity in the ($\cdot$) is the absolute score suggested by the label. Only the labels were marked on the rating bar and not the scores. The initial position of the cursor was set to 0 for each rating and the subject was guided to use the wireless mouse to move the cursor to their desired score. Once the subject finalizes the score, they are supposed to press the NEXT button which will record their score in a text file and play the next video for them. The application does not support replaying a video since we want to record only the first instinctual response of the participant, hence they were guided to avoid any possible distractions during video playback. 
+
+\subsection{Subjective Testing Protocol}
+
+We followed the single stimulus testing protocol in our human study according to the ITU-T recommendations [\cite{}]. As the LIVE-ShareChat dataset contains user-generated content, it does not involve the concept of reference and distorted videos . The dataset contains a total of 600 videos with a viewing time of 8 seconds per video, resulting in a total of 4,800 seconds of playback time. Accounting for the rating time we estimated a total of 20 seconds for viewing and rating a single stimulus, resulting in a total of 12,000 seconds or 3.33 hours for the whole dataset. Since this is pretty high pressure for a volunteer, we split the dataset into four unique and uniformly distributed playlists such that each playlist had a total of 150 videos. We also estimated a total of 48 subjects and divided them evenly into 4 groups of 12 each. Each group was assigned two out of four playlists in a round-robin fashion. As a result, each volunteer views two playlists with 150 videos each, resulting in a total viewing time of 6,000 seconds. Since this is well below two hours, we split it into two sessions and play exactly one playlist in a single session. Each subject was required to attend two sessions in order to complete the study while making sure there was a minimum gap of 24 hours between the two sessions to reduce fatigue and bias of any sort. Given that each playlist was viewed by 24 subjects, each video in our dataset gets 24 ratings.
+
+\subsection{Subject Screening and Training}
+We recruited 48 volunteers from varying academic backgrounds from the student community of The University of Texas at Austin. Some of them are friends/colleagues, and members of the LIVE group while others are completely random. The volunteer pool had little/no experience in video quality evaluation apart from members of the LIVE group. Each subject participated in 2 sessions conducted over different days.  
+
+Vision deficiency tests were conducted for each volunteer to keep track of deficient participants. We conducted the Ishihara Color blindness test and found one color blind participant. While Snellen Eye test ensured everyone had a 20/20 vision with their corrective glasses/contact lenses on, if any. We did not use these tests to, in any way, validate/alter the participation of any volunteer which would render such a psychometric study unrealistic. 
+
+In the next step, subjects were introduced to the Subjective study room and the setup inside. They were introduced to the purpose of the study and the nature of the videos they would be viewing. We further instructed them to only rate the perceived visual quality, while completely ignoring the content. Since the videos in the database were originally created for entertainment/learning purposes, it is highly natural that the quality of the content can defocus a subject's attention towards visual aberrations and ultimately hamper their opinion. Thus it was necessary to familiarize them with the type of videos they would be viewing. To enable this, at the beginning of each session, subjects were shown three different videos of different quality and content as training videos. The scores recorded during the training session were not included in the psychometric database. 
+
+\subsection{Post Study Questionnaire}
+At the conclusion of each video quality rating session, subjects were asked to fill out a questionnaire. This data was collected to ensure the reliability of the subjective ratings collected during the human study sessions. Within this subsection, we present a summary of answers to those questions and demographic information about the subjects. 
+
+Approximately 85\% of the subject population was male and the rest female. The minimum age of the subject pool was 21, while the maximum was 29. The mean, median, and standard deviation of the ages of the participants were found to be 24.75, 24.0, and 2.34. More than 90\% of the pool felt that 8 seconds of visual playback were enough to adequately judge the quality of the videos. None of the participants complained about any kind of dizziness during their sessions. 
+
+\begin{figure*}[htbp]
+    \centering
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/raw_scores.png}
+        \caption{}
+        \label{fig:sub1}
+    \end{subfigure}%
+    \vfill \hspace{0.1in}
+    \begin{subfigure}{1\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/recovered_scores.png}
+        \caption{}
+        \label{fig:sub2}
+    \end{subfigure}
+    \captionsetup{justification=justified}
+    \caption{Raw opinion scores vs Recovered scores using MLE-MOS estimation}
+    \label{fig:architectures}
+\end{figure*}
+
+\subsection{Processing of subjective scores}
+We begin by evaluating the reliability of the recorded opinion scores. To do so, we first compute the inter-subject and intra-subject consistency scores using the raw opinion scores collected during the study. \\
+
+\subsubsection{Inter-subject consistency} As the name suggests, it is the degree of correlation of the opinion scores amongst different subjects. To calculate the inter-subject consistency we split the scores recorded for every video into two distinct equal groups, and measure the correlation of MOS between these two groups. We repeat this process over 100 trials, and in each trial the two distinct groups are chosen randomly. The median PLCC (Pearson linear correlation coefficient) over the 100 trials was 0.85 and the median SROCC (Spearman rank order correlation coefficient) over the 100 trials was 0.83.\\
+
+\subsubsection{Intra-subject consistency} It is a measure of how consistently an individual subject has scored each video with respect to its MOS. To quantify the intra-subject consistency we compute the PLCC and SROCC between the individual opinion scores and the MOS. The median PLCC was 0.62 and the median SROCC was 0.60. Since we are dealing with a UGC database hence the scores are obviously not as high as one would expect in the case of a synthetically generated database.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        & SRCC & PLCC \\
+        \midrule
+        Inter-Subject Consistency & 0.8292 & 0.8459 \\
+        Intra-Subject Consistency & 0.5925 & 0.6154 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Consistency Scores}
+    \label{tab:ConsistencyScores}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    {{\includegraphics[width=\linewidth]{images/raw_opinion_scores.png}}}
+    \captionsetup{justification=justified}
+    \caption{Visual distribution of raw opinion scores}
+    \label{fig:architectures}
+\end{figure}
+
+\begin{figure*}[htbp]
+    \centering
+    \begin{subfigure}{.301\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/z-score_dist.png}
+        \caption{}
+        \label{fig:sub1}
+    \end{subfigure}%
+    \hfill \hspace{0.1in}
+    \begin{subfigure}{.327\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/MOS-dist.png}
+        \caption{}
+        \label{fig:sub2}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}{.327\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/inter-subject_Consistency.png}
+        \caption{}
+        \label{fig:sub3}
+    \end{subfigure}
+    \captionsetup{justification=justified}
+    \caption{Dataset Distributions}
+    \label{fig:MOS_dist}
+\end{figure*}
+
+Given the consistency scores are not very high (Table \ref{tab:ConsistencyScores}), we will need to check for subject rejection [citehere] via outlier detection while computing the final subjective quality score. To overcome this we employed the method described in [netflix paper citehere] which demonstrates how a maximum likelihood estimate (MLE) method of computing MOS offers advantages over traditional methods. The MLE method is less susceptible to subject corruption and provides tighter confidence intervals. 
+
+[netflix paper citehere] models the raw opinion scores of the videos as 
+random variables $\{X_{e,s}\}$ with the following form:
+
+\begin{align}
+    X_{e,s} &= x_e + B_{e,s} + A_{e,s} \nonumber \\
+    B_{e,s} &\sim  \mathcal{N} (b_s, v^2_s) \\
+    A_{e,s} &\sim  \mathcal{N} (0, a^2_{c:c(e)=c}) \nonumber 
+\end{align}
+
+where $e = 1, 2, 3, ..., 600$ are the indices of the videos in the database and $s = 1, 2, 3, ..., 48$ are the unique human participants. In the above model, $x_e$ represents the quality of the video $e$ as perceived by a hypothetical unbiased and consistent viewer. $B_{e,s}$ are i.i.d gaussian variables representing the human subject $s$, it is parameterized by a bias (i.e., mean) $b_s$ and inconsistency (i.e., variance) $v^2_s$. This bias and inconsistency is assumed to remain same constant across all videos viewed by the subject $s$. $A_{e,s}$ are i.i.d gaussian variables representing a particular video content parameterized by the ambiguity (i.e., variance) $a^2_c$ of the content $c$, and $c = 1, 2, ...600$ indexes the unique source sequences in the database. All the distorted versions of a reference video, including the reference video itself, are presumed to contain the same level of ambiguity, and the video content ambiguity is assumed to be consistent across all users. In this formulation, the parameters $\theta = ({x_e}, {b_s}, {v_s}, {a_c})$ denote the variables of the model. To estimate the parameters $\theta$ using MLE, the log likelihood function $L$ is defined as :
+
+\begin{equation}
+    L = \log P(\{x_{e,s}\}|\theta)
+\end{equation}
+
+Using the data obtained from the psychometric study, we derive a solution for $\hat{\theta} = $ argmax$_\theta L$ using the Belief Propagation algorithm, as shown in [netflix paper citehere]. We discuss more details about the extracted opinion scores in the next section. 
+
+Since the MLE model did not detect any outliers, hence as a sanity check, we also use the traditional method of calculating MOS using normalized opinion scores. Within this scope, let $m_{ijk}$ denote the score recorded for video $j$ provided by subject $i$ in session $k = {1, 2}$. Let $\delta(i, j)$ be an indicator function, where
+
+\begin{equation}
+    \delta(i, j) = \begin{cases} 
+      1 & \textrm{if subject } i \textrm{ rated video } j \\
+      0 & \textrm{otherwise}
+      \end{cases}
+\end{equation}
+
+
+We need $\delta(i, j)$ since not all videos in the database are rated by every subject. We calculate the normalized opinion scores received across multiple sessions of each subject as 
+
+\begin{align}
+    \mu_{ik} &= \frac{1}{N_{ik}}\sum^{N_{ik}}_{j=1}{m_{ijk}} \nonumber \\
+    \sigma_{ik} &= \sqrt{\frac{1}{N_{ik}-1}\sum^{N_{ik}}_{j=1}{(m_{ijk}-\mu_{ik})^2}} \nonumber \\
+    z_{ijk} &= \frac{m_{ijk}-\mu_{ik}}{\sigma_{ik}} \nonumber
+\end{align}
+
+where $z_{ijk}$ is the normalized opinion score or the Z-score per session and $N_{ik}$ is the number of videos seen by subject $i$ in session $k$. The Z-scores from all sessions were concatenated to form the matrix $\{z_{ij}\}$ denoting the Z-score assigned by subject $i$ to the videos indexed by $j$ with $j \in \{1, 2, \ldots, 600\}$, where the entries of $\{z_{ij}\}$ are empty at locations $(i, j)$ where $\delta(i, j) = 0$. Assuming $z_{ij}$ to have a standard normal distribution, $99\%$ of the Z-scores were found to lie in $[-5, 5]$. A linear re-scaling was used to map scores to the range $[0, 100]$ as 
+\begin{equation}
+    z^{'}_{ij} = \frac{100(z_{ij} + 5)}{10}
+\end{equation}
+
+
+Finally the Mean Opinion Score (MOS) of each video was calculated by averaging the scores received for that video as
+
+\begin{equation}
+    MOS_j = \frac{1}{N_{j}}\sum^{N}_{i=1}{z^{'}_{ij}\delta(i,j)}
+\end{equation}
+
+where $N_j = \sum^{N}_{i=1} \delta(i, j)$. The correlation between the scores obtained by MLE-MOS and traditional methods was 0.996.
+
+The MOS were found to lie in the range [26.19, 65.66], and the mean of standard deviations of the rescaled Z-scores obtained from all subjects across all images was found to be 6.99. The histogram of MOS is shown in Fig. \ref{fig:MOS_dist} indicating a relatively broad MOS variation given the videos belong to in-the-wild scenario.
+
+\subsection{\textcolor{red}{Analysis and Visualization of the Opinion Scores}}
+
+\section{Benchmarking Objective NR-VQA Algorithms}
+\begin{table*}[htbp]
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        Method & SRCC $\uparrow$ & KRCC $\uparrow$ & PLCC $\uparrow$ & RMSE $\downarrow$ \\
+        \midrule
+        NIQE & 0.3954 & 0.2276 & 0.3288 & 5.0920 \\
+        BRISQUE & 0.4766 & 0.3340 & 0.4922 & 4.8439 \\
+        VIDEVAL & 0.7104 & 0.5172 & 0.7087 & 3.8681 \\
+        RAPIQUE (ResNet+S-NSS+T-NSS) & 0.7280 & 0.5410 & 0.7392 & 3.7194 \\
+        Contrique & 0.7154 & 0.5254 & 0.7241 & 3.8120 \\
+        Contrique+S-NSS+T-NSS & 0.7353 & 0.5436 & 0.7403 & 3.7153 \\
+        Ours & 0.7048 & 0.5203 & 0.7150 & 3.8655 \\
+        \midrule
+        \textbf{Ours+S-NSS+T-NSS (MoEVA)} & \textbf{0.7524} & \textbf{0.5626} & \textbf{0.7599} & \textbf{3.5932} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Performance evaluation of NR-VQA algorithms on LIVE-ShareChat UGC database}
+    \label{tab:performance_VQA}
+\end{table*}
+We evaluated a number of publicly available No-Reference (NR-VQA) algorithms on the LIVE-ShareChat UGC database to understand the impact of the uniqueness of the database on existing VQA algorithms. We selected six well-known general-purpose NR-VQA models to test: NIQE [citehere], BRISQUE [citehere], VIDEVAL [citehere], RAPIQUE [citehere], VSFA [citehere], and CONTRIQUE [citehere].  NIQE and BRISQUE were originally published as image quality assessment algorithms, to adapt for videos we apply average pooling operation on the quality-aware features extracted individually for each frame. For the off-the-shelf method NIQE, the predicted frame quality scores were directly pooled, yielding the final video quality scores. For the methods that require supervision before they can be used (BRISQUE, VIDEVAL, RAPIQUE, VSFA, and CONTRIQUE), we used a support vector regressor (SVR) with the radial basis function kernel to learn mappings from the pooled quality-aware features to the ground truth MLE-MOS. VIDEVAL carefully curates 60 statistical features that showed high correlation with human opinion scores for the databases available at the time of its inception. VSFA uses a Resnet-50 [35] deep learning backbone to obtain quality-aware features, followed by a single-layer Artificial Neural Network (ANN) and Gated Rectified Unit (GRU) [36] to map features to MLE-MOS. RAPIQUE combined natural scene statistics with deep learning features in an attempt to create a mixture-of-experts based model. CONTRIQUE uses contrastive pre-training to learn features associated with image quality, that are then used for quality assessment. We evaluated the performance of the objective NR-VQA algorithms using the following metrics: Spearman’s Rank Order Correlation Coefficient (SROCC), Kendall Rank Correlation Coefficient (KRCC), Pearson’s Linear Correlation Coefficient (PLCC), and Root Mean Square Error (RMSE). The metrics SROCC and KRCC measure the monotonicity of the objective model prediction with respect to human scores, while the metrics PLCC and RMSE measure prediction accuracy. The predicted quality scores were passed through a logistic non-linearity function [38] to further linearize the objective predictions and to place them on the same scale as MOS: 
+
+\begin{equation}
+    f(x) = \beta_2 + \frac{\beta_1 - \beta_2}{1 + \exp(-x + \beta_3/ |\beta_4|)}
+\end{equation}
+
+We tested the algorithms mentioned above on 1000 random train-test splits using the four metrics. For each split, 80\% of the videos were randomly chosen for training and validation, while the remaining 20\% constituted the test set. All the algorithms were tested on the test set after pre-training them on the train set generated using the aforementioned train-test split, except NIQE, which doesn't require any pre-training. 
+Since NIQE is an unsupervised model, we evaluated its performance on all 1000 test sets, without any training. We applied five-fold cross-validation to the training and validation sets of BRISQUE, VIDEVAL, RAPIQUE, VSFA and CONTRIQUE to find the optimal parameters of the SVRs they were built on. When testing VSFA, for each of the 1000 splits, the train and validation videos were used to select the best-performing ANN-GRU model weights on the validation set.
+
+\subsection{Performance of NR-VQA Models}
+Table \ref{tab:performance_VQA} lists the performances of the aforementioned NR-VQA algorithms on the LIVE-ShareChat UGC database. We found that NIQE performed poorly, which is not surprising since it was developed using a set of pristine images available at the time of its development. Over time, the quality and characteristics of cameras and camera processing pipelines have changed drastically. This distinction between the training set of NIQE and the test set contributes largely to its performance. However, the performance of BRISQUE was slightly superior. Note that BRISQUE uses the same NIQE features but uses a SVR head to regress quality scores diretly from those features instead of comparing the statistical features with standard gold features. The impact of the set of pristine images used in NIQE is clearly reflected by the gap in performance between NIQE and BRISQUE. The performance of VIDEVAL, RAPIQUE, and CONTRIQUE was definitely a stark improvement over NIQE and BRISQUE. In the case of VIDEVAL, this boost can probably be attributed to the fact that the model uses many hand-tuned hyper-parameters that were selected to optimize the prediction of video quality on general-purpose content. On the other hand, CONTRIQUE being a deep learning model has been trained on a huge dataset of 2M images and performs accordingly. Meanwhile, RAPIQUE which is a hybrid model, performs best by combining the handcrafted perceptual quality features with the high-level semantic features generated through its deep learning module. 
+
+\begin{figure*}[htbp]
+    \centering
+    {{\includegraphics[width=\textwidth]{images/moeva.drawio.png}}}
+    \captionsetup{justification=justified}
+    \caption{MoEVA Evaluation Pipeline}
+    \label{fig:architectures}
+\end{figure*}
+
+Although we noted that RAPIQUE performed the best, the performance of VIDEVAL, and CONTRIQUE were competitive enough. We must also note that the models, at their core, use different base principles. While VIDEVAL shows the usefulness of the statistical features, CONTRIQUE demonstrates that the same can be achieved solely by deep-learning-based features. RAPIQUE, a hybrid model, further strengthens the fact that the combination of statistical features and deep-learning-based features is better than either one of them. 
+
+\section{Mixture-of-Expert based NR-VQA Algorithm}
+
+To this end, we present a novel NR-VQA algorithm that is designed while keeping the aforementioned learnings in sight. We call our method \textbf{MoEVA}, which is a \textbf{M}ixture-\textbf{o}f-\textbf{E}xperts-based \textbf{V}ideo-quality \textbf{A}ssessment algorithm. We extend the concept of RAPIQUE and develop a hybrid model that combines Spatial NSS features, Temporal NSS features, and deep-learning features. Since spatial and temporal NSS features are handcrafted for quality assessment, improving upon them is difficult and hence we borrow them as it is. We do however develop a novel method to upgrade the deep-learning module since the model used in RAPIQUE is a simple ResNet-50 trained for image classification task on ImageNet dataset using supervised techniques. RAPIQUE claims that the inherent semantic understanding of the deep-learning model helps them predict perceptual quality closer to human opinions, thus reinstating the fact that semantic information plays a role in perceptual quality assessment. While we agree with this, we believe there are better ways to pre-train such a network in a more effective way than training using a supervised task. Multiple recent research articles such as [a,b,c,d,,,] have shown how unsupervised training captures more general information than supervised training, thus helping the model perform better in various correlated tasks instead of specializing in one. With this concept in mind, CONTRIQUE builds a contrastive training environment within which it trains the model to learn the distinction between different distortions. CONTRIQUE uses a synthetic dataset generated by applying fixed distortions to a set of pristine images. Any two images with the same distortion are categorized as the same and any two images with different distortion settings are marked as different thus fitting into the contrastive loss. While CONTRIQUE improves the model's understanding of the distortions by forcing it to learn them using a contrastive loss, it also hinders its understanding of the content by using the same loss. It forces the network to generate similar features for two images with the same distortion settings even if their content is different. We develop a novel method to apply contrastive learning to understand distortion behavior under the impact of content. 
+
+For contrastive learning-based training, we need pairs of images that are labeled either the same or different. We also want to train the network on the images at the original scale same as the test domain. Hence we operate on a patch level instead of a full frame. To create the distinction between the labels and to create a protocol to label pairs accordingly, we lay out the following hypothesis:
+
+\begin{itemize}
+    \item \textbf{H1}: Perceptual quality of two nearby patches would have higher chances of being similar than the perceptual quality of two distant patches cropped from the same image, considering the local content within the distant patches to be more different as compared to the content in the nearby patches. We also extend it and assume that the perceptual quality features of two distinct patches taken from two different images are different. Note that this does not enforce any condition on the quality score, different quality features can lead to similar scores since the SVR can be a many-to-one function.
+    \item[]
+    \item \textbf{H2}: Two differently distorted versions of the same patch ought to have different perceptual quality features. Since the content within the two patches is exactly the same, hence any difference in the perceptual quality should be reflected in the perceptual quality features generated from our network as the SVR is not a one-to-many function.
+\end{itemize}
+
+Contrastive training is a self-supervised training strategy that learns representative features by understanding the connection between the two images in an input pair. This connection is characterized by the sample being either a \textbf{+ve} example or a \textbf{-ve} example. A \textbf{+ve} sample occurs when the inputs in a pair are labeled as similar/same and hence encourages the model to generate similar features for the two inputs. While a \textbf{-ve} sample occurs when the inputs in the pair are labeled as different, thus encouraging the model to generate different features. In the following subsections, we explain our augmentation scheme that aligns with the generation of such pairs while labeling them using the aforementioned hypotheses. 
+
+\subsection{Training dataset}
+Since the 600 videos in the LIVE-ShareChat UGC-VQA database were curated from a larger publicly available set of 20,000 videos, it is safe to assume that the all of the videos not included in the dataset have similar features/characteristics as the ones inlcuded in it. Thus we choose to train our model on the frames extracted from these 20,000 videos excluding the 600 videos in the LIVE-ShareChat UGC-VQA database. Since our hypotheses are built around image specific properties, we extract the frames from all the videos and use each of them as a distinct image in our training set. Note that consecutive frames have very little change thus instead of choosing every frame we only sample every $15^{th}$ frame.
+
+\subsection{Content+Quality Aware Augmentation scheme}
+\begin{figure*}[htbp]
+    \centering
+    {{\includegraphics[width=\textwidth]{images/training_scheme.drawio.png}}}
+    \captionsetup{justification=justified}
+    \caption{MoEVA Deep learning module Pre-training scheme}
+    \label{fig:architectures}
+\end{figure*}
+To enable the model to learn the distinction between different distortion settings we use an augmentation bank that includes 25 distinct image-specific synthetic distortions, with 5 levels within each distortion. For any source frame $i^k$ from the training set, where $k \in {1, 2...K}$ and $K$ is the total number of images in the training data, a randomly chosen subset of the augmentations available in the bank are applied to each image resulting in a mini-batch of distorted images. We combine the source image with the generated augmentations to form $chunk^k$:
+
+\begin{equation}
+    chunk^k = [i^k, i_1^k, i_2^k, ..., i_n^k]
+\end{equation}
+
+where $i_j^k$ is the $j^{th}$ distorted version of $i^k$, and $n$ is the number of augmentations drawn from the bank. We then generate two random crops of $chunk^k$ , namely $chunk^k_{c1}$ and $chunk^k_{c2}$, using an overlap area-based smart cropping mechanism. We choose these crop locations such that the overlapping area (OLA) in the two crops falls within the minimum and the maximum bound of our choosing. We make sure that the crop location is the same over all images in each chunk and different between chunks, resulting in:
+\begin{equation}
+    \begin{split}
+    chunk^{k_{c1}} &= [i^{k_{c1}},{i{_1}}^{k_{c1}}, {i{_2}}^{k_{c1}},..., {i{_{n}}}^{k_{c1}}] \\
+    chunk^{k_{c2}} &= [{i}^{k_{c2}},{i{_1}}^{k_{c2}}, {i{_2}}^{k_{c2}},..., {i{_{n}}}^{k_{c2}}] 
+    \end{split}\label{eq:label2}
+\end{equation}
+
+after generating the above augmentations we carefully pair and label them using our defined hypotheses as follows:
+
+\begin{gather*}
+    \begin{split}
+        [{i_{m}^{k_{c1}}}, {i_{m}^{k_{c2}}}] &\mapsto similar/same-quality\\
+        [{i_{m}^{k_{c1}}},{i_{l}^{k_{c2}}}] &\mapsto different-quality\\
+        [{i_{m}^{k_{c1}}}, {i_{l}^{k_{c1}}}] &\mapsto different-quality\\
+        [{i_{m}^{k_{c1}}}, {i_{l}^{j_{c2}}}] &\mapsto different-quality
+    \end{split}
+\end{gather*}
+
+\subsection{Contrastive Pre-training}
+
+We begin by defining two identical encoders 1) Online Encoder (O) and 2) Momentum Encoder (M). Both the encoders are ResNet-50 backbones with an MLP head to generate the final output embedding used in the loss function. We split the pairs we designed in step 1 and pass the first image in the pair through O and the other through M. To calculate the loss between the representation generated by O and M, we use the InfoNCE \cite{oord2018representation} loss function:
+\begin{equation}
+    \!\!\mathcal{L}_{q, k^+, \{k^-\}} = -\log \frac{\exp(q.k^+/\tau)}{\exp{(q.k^+/\tau)}+\sum\limits_{k^-}^{} \exp(q.k^-/\tau)}
+\end{equation}
+
+Here $q$ is the query image, $k^+$ is a positive sample (similar/same-quality), and ${k^-}$ are the representations for negative samples (different-quality). $\tau$ is a temperature hyper-parameter. This loss is then used to update the weights of O by backpropagation. The weights of M are updated using the weighted sum of the previous weights of M and the new weights of O. Formally denoting the parameters of O as $\theta_{O}$ and parameters of M as $\theta_{M}$, we update $\theta_{M}$ as:
+
+\begin{equation}
+    \theta_{M} \leftarrow m\theta_{M} + (1-m)\theta_{O}
+\end{equation}
+
+Here $m\in[0,1)$, is the momentum coefficient. Once the encoder pre-training has saturated the frozen ResNet-50 encoder weights of the Online encoder O can be used for any downstream task associated with perceptual image quality.
+
+\subsection{VQA Regression}
+
+We create the video representative features for each video by average pooling the image representative features generated for each frame using the pre-trained encoder mentioned in the previous subsection. The video representative features are then concatenated with the spatial and temporal NSS features which are then used to train a SVR head to map the collected features to the corresponding MOS. 
+
+As we are dealing with videos, it would be more appropriate to apply some kind of temporal pooling instead of a simple average pooling while computing the video representative features from the image representative features. To test this theory we implement temporal pooling using a GRU similar to CONVIQT[] which uses the CONTRIQUE backbone with a GRU. We drop this method as there was no performance boost when compared to simple average pooling. We believe this is largely because temporal quality aspects are already being represented heavily by the temporal NSS features. 
+
+\subsection{Experimental results and discussion}
+
+We evaluated our model in the same way as we evaluated the other algorithms. The specialized encoder performs drastically better than RAPIQUE's naive encoder, which is evident from the results. For fair comparison we also evaluate CONTRIQUE, which is basically another such specialized backbone, with the spatial and temporal NSS features. Although CONTRIQUE enjoys a boost when paired with the NSS features, it still falls significantly short when compared to our method. 
+
+This is a clear indication that existing UGC-VQA algorithms that have performed competitively well on prior UGC-VQA datasets are clearly suffering from a dataset bias. The uniqueness of the LIVE-ShareChat UGC database displays the real picture where we can observe that the existing state-of-the-art algorithms are not sufficient enough to be generalized to all UGC-VQA cases. 
+
+\section{\textcolor{red}{Conclusion and Future Work}}
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+% \section{Conclusion}
+% The conclusion goes here.
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+% \section{Proof of the First Zonklar Equation}
+% Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+% \section{}
+% Appendix two text goes here.
+
+
+% use section* for acknowledgment
+\section*{\textcolor{red}{Acknowledgment}}
+
+
+The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\bibitem{IEEEhowto:ETReport}
+{`India set to surpass 1 billion Internet users, $400$ bn online spending by 2030: Report'
+\url{https://government.economictimes.indiatimes.com/news/technology/india-set-to-surpass-1-billion-internet-users-400-bn-online-spending-by-2030-report/96239734}}, 2022, [Online; accessed 28-December-2022]
+\end{thebibliography}
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}{Sandeep Mishra}
+Biography text here.
+\end{IEEEbiography}
+
+% if you will not have a photo at all:
+\begin{IEEEbiography}{Alan C. Bovik}
+Biography text here.
+\end{IEEEbiography}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
